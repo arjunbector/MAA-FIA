@@ -101,6 +101,8 @@ import NextAuth from "next-auth";
 import { connectMongoDB } from "@/lib/mongodb";
 import GoogleProvider from "next-auth/providers/google";
 import {Users} from "@/models/user";
+import { NextResponse } from "next/server";
+
 
 const GOOGLE_AUTHORIZATION_URL =
   "https://accounts.google.com/o/oauth2/v2/auth?" +

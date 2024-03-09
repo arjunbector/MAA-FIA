@@ -9,10 +9,10 @@ import { motion } from "framer-motion";
 const HeroSection = () => {
   return (
     <section className="min-h-screen flex items-start pt-20 bg-[#F5EEE6]">
-      <div className="h-52 w-full flex flex-col-reverse  md:flex-row justify-center items-start mx-40 gap-10">
+      <div className="h-52 w-full flex flex-col-reverse  md:flex-row justify-center items-start mx-32 gap-10">
         <div className="w-full sm:w-1/2 h-full">
-          <h1 className="text-6xl">MAA-FIA</h1>
-          <div className="flex flex-col gap-10 mt-5">
+          <h1 className="text-7xl">MAA-FIA</h1>
+          <div className="flex flex-col gap-10 mt-5 text-lg">
           <p className="font-semibold">
             <span className="text-[#E6A4B4]">
               Mother's After-Assistance – Facilitating Integration & Advancement

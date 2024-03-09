@@ -21,7 +21,7 @@ const Navbar = () => {
       ) : (
         <button className="bg-[#E6A4B4] px-2 py-1 rounded-md"
           onClick={() => {
-            signIn();
+            signIn("google");
           }}
         >
           Login

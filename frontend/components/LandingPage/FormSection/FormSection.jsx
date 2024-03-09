@@ -60,7 +60,7 @@ const FormSection = () => {
       healthComplications: healthDataToSend,
       challenges: challengesDataToSend,
     });
-    console.log("fdsgf",session)
+    console.log("session ====== \n\n\n\n\n\n\n",session)
     fetch("api/register/login", {
       method: "POST",
       headers: {
@@ -112,11 +112,11 @@ const FormSection = () => {
           Share Your Details
         </h1>
         <Form formData={formData} setFormData={setFormData} />
-        <div className="my-16 mx-28 p-10 bg-[#FFF8E3] flex flex-col justify-start rounded-lg">
-          <h1 className="m-1 font-semibold mb-3">Health Complications</h1>
+        <div className="my-16 mx-56 px-10 py-5 bg-[#FFF8E3] flex flex-col justify-start rounded-lg border-[#F3D7CA] border-2 text-slate-600">
+          <h1 className="m-1 font-semibold mb-3 mt-0">Health Complications</h1>
           <div className="flex flex-wrap gap-4">{healthCapsules}</div>
         </div>
-        <div className="my-16 mx-28 p-10 bg-[#FFF8E3] flex flex-col justify-start rounded-lg">
+        <div className="my-16 mx-56 px-10 py-5 bg-[#FFF8E3] flex flex-col justify-start rounded-lg border-[#F3D7CA] border-2 text-slate-600">
           <h1 className="m-1 font-semibold mb-3">
             Expected Challenges you foresee when returning to work{" "}
           </h1>

@@ -9,7 +9,6 @@ export default function Home() {
     <main>
       <Navbar/>
       <HeroSection/>
-      <FormSection/>
       <Dashboard/>
       {/* <Blogs/> */}
     </main>
