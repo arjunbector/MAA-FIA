@@ -28,7 +28,11 @@
     "next": "14.1.3",
     "next-auth": "^4.24.7",
     "react": "^18",
+<<<<<<< HEAD
     "react-calendar": "^4.8.0",
+=======
+    "react-countup": "^6.5.0",
+>>>>>>> fcfd16ddcd22cfe2d2c64ca631115b5636178ef2
     "react-day-picker": "^8.10.0",
     "react-dom": "^18",
     "tailwind-merge": "^2.2.1",
