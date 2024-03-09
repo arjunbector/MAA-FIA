@@ -27,7 +27,7 @@ const AboutUs = () => {
               />
               %
             </p>
-            <h3 className="text-sm text-center">
+            <h3 className="text-sm text-center text-slate-600">
               Women face difficulty restoring their pre-baby career success.
             </h3>
           </div>
@@ -42,7 +42,7 @@ const AboutUs = () => {
               />
               %
             </p>
-            <h3 className="text-sm text-center">
+            <h3 className="text-sm text-center text-slate-600">
               Indian women leave the workforce within four months of their
               return from maternity leave
             </h3>
@@ -58,7 +58,7 @@ const AboutUs = () => {
               />
               %
             </p>
-            <h3 className="text-sm text-center">
+            <h3 className="text-sm text-center text-slate-600">
               Companies do not comply with the POSH act norms.
             </h3>
           </div>
