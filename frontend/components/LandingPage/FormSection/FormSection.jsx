@@ -3,7 +3,9 @@ import leftVector from "../../../public/landingPage/form/leftVector.svg";
 import rightVector from "../../../public/landingPage/form/rightVector.svg";
 import bottomVector from "../../../public/landingPage/form/bottomVector.svg";
 import Form from "./Form";
+import healthCompArr from "@/constants/complications";
 import { useState } from "react";
+import Capsule from "./Capsule";
 
 const FormSection = () => {
   const [formData, setFormData] = useState({
@@ -20,59 +22,12 @@ const FormSection = () => {
     challenges: [],
   });
 
-  const healthCompArr = [
-    {
-      id: 1,
-      name: "Postpartum Depression",
-      selected: false,
-    },
-    {
-      id: 2,
-      name: "Anemia",
-      selected: false,
-    },
-    {
-      id: 3,
-      name: "Chronic Pain",
-      selected: false,
-    },
-    {
-      id: 4,
-      name: "Fatigue",
-      selected: false,
-    },
-    {
-      id: 5,
-      name: "Breastfeeding Issues",
-      selected: false,
-    },
-    {
-      id: 6,
-      name: "Postpartum Hormonal Changes",
-      selected: false,
-    },
-    {
-      id: 7,
-      name: "Urinary Incontinence",
-      selected: false,
-    },
-    {
-      id: 8,
-      name: "Emotional Adjustment",
-      selected: false,
-    },
-    {
-      id: 9,
-      name: "Sleep Disorder",
-      selected: false,
-    },
-    {
-      id: 10,
-      name: "Postpartum Weight Retention",
-      selected: false,
-    },
-  ];
-  
+  const [healthDataToSend, setHealthDataToSend] = useState([]);
+  console.log(healthDataToSend);
+  const healthData = [...healthCompArr];
+  const capsules = healthData.map((complication) => (
+    <Capsule text={complication.name} selected={complication.selected} healthDataToSend={healthDataToSend} setHealthDataToSend={setHealthDataToSend} />
+  ));
 
   console.log(formData);
   return (
@@ -86,8 +41,14 @@ const FormSection = () => {
       <div className="absolute bottom-0 left-[30vw]">
         <Image className="w-96" src={bottomVector} />
       </div>
-      <div className="w-[90vw] bg-[#f3d7ca6c] h-screen backdrop-blur-[3px] m-10">
+      <div className="w-[90vw] bg-[#f3d7ca6c] min-h-screen h-fit backdrop-blur-[3px] m-10">
         <Form formData={formData} setFormData={setFormData} />
+        <div className="my-16 mx-28 p-10 bg-[#FFF8E3] flex flex-col justify-start rounded-lg">
+          <h1 className="m-1 font-semibold mb-3">Health Complications</h1>
+          <div className="flex flex-wrap gap-4">
+         {capsules}
+          </div>
+        </div>
       </div>
     </section>
   );
