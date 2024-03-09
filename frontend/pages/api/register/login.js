@@ -13,6 +13,7 @@ export default async function handler(req, res) {
     const job = req.body.job;
     const industry = req.body.industry;
     const city = req.body.city;
+    const dob = req.body.dob;
     const dod = req.body.dod;
     const healthComplications = req.body.healthComplications;
     const challenges = req.body.challenges;
@@ -24,6 +25,7 @@ export default async function handler(req, res) {
       job,
       industry,
       city,
+      dob,
       dod,
       healthComplications,
       challenges,

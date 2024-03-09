@@ -60,15 +60,40 @@ const FormSection = () => {
       healthComplications: healthDataToSend,
       challenges: challengesDataToSend,
     });
+    console.log("fdsgf",session)
     fetch("api/register/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorzation: `Bearer ${session.accessToken}`,
+        Authorization: `Bearer ${session.accessToken}`,
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(formData),
-    }).then((res) => console.log(res));
+    }).then((res) => {
+      console.log("Response:" , res.status);
+      if (res.status === 200) {
+        console.log("User Details entered");
+        console.log("session:", session.accessToken );
+        fetch("api/gemini/callgemini", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${session.accessToken}`,
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify({}),
+        })
+        .then(res=>{
+          if(res.status===200){
+            console.log("Done");
+          }
+        })
+        ;
+      }
+    })
+    .catch(err=>{
+    console.log("Error occured",err);
+    });
   };
 
   return (

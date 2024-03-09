@@ -28,6 +28,9 @@ const userDetailSchema = new Schema(
         country: {
             type: String,
         },
+        dob: {
+            type: String,
+        },
         dod: {
             type: String,
         },

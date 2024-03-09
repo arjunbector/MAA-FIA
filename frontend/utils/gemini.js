@@ -10,7 +10,7 @@ const {
 const MODEL_NAME = "gemini-1.0-pro";
 const API_KEY = "AIzaSyB-yA1oONsOH8KAm12rv8FbT2ahs70Pk6A";
 
-export default async function runChat() {
+export default async function runChat(details) {
   const genAI = new GoogleGenerativeAI(API_KEY);
   const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
@@ -39,9 +39,10 @@ export default async function runChat() {
       threshold: HarmBlockThreshold.BLOCK_MEDIUM_AND_ABOVE,
     },
   ];
+  
 
-  let details =
-    "Name: Jane Age: 27 From: Mumbai, India Industry: Finance Age of baby: 6 months Complications after delivery: Lack of Sleep, Anxiety and Hormonal Imbalance Scares before joining back: Unable to find someone to take care of baby while at home, Might be scared to start work because people might look at them differently as it was before.";
+  let details1 =
+    `Name: ${details.firstName + details.lastName} Age: ${details.age} From: ${details.city + ", " + details.country} Industry: ${details.industry} Age of baby: ${details.babyAge} months Complications after delivery: ${", ".join(details.healthComplications)} Scares before joining back: ${", ".join(details.challenges)}`;
 
   const chat = model.startChat({
     generationConfig,
@@ -52,7 +53,7 @@ export default async function runChat() {
         parts: [
           {
             text:
-              details +
+              details1 +
               "Based on the information provided regarding a pregnant woman coming back to work, give a daily list of tasks which they are to do for a month. Also, give a weekly list for the month and also give a list of tasks that are to be achieved through the month. Make sure you take into account the maternity leave laws of the place where they are from before giving the tasks. Adjust tasks according to that.",
           },
         ],
