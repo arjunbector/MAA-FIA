@@ -1,3 +1,4 @@
+import AboutUs from "@/components/LandingPage/AboutUs/AboutUs";
 import Blogs from "@/components/LandingPage/Blogs/Blogs";
 import Dashboard from "@/components/LandingPage/Dashboard/dashboard";
 import FormSection from "@/components/LandingPage/FormSection/FormSection";
@@ -7,11 +8,11 @@ import Navbar from "@/components/Navbar";
 export default function Home() {
   return (
     <main>
-      <Navbar/>
-      <HeroSection/>
-      <Dashboard/>
-      <Blogs/>
+      <Navbar />
+      <HeroSection />
+      <AboutUs />
+      <Blogs />
+      <Dashboard />
     </main>
   );
-
 }

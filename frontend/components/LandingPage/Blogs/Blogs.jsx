@@ -58,14 +58,12 @@ const Blogs = () => {
         <h1 className="w-full flex justify-center text-4xl tracking-widest font-bold my-10">
           BLOGS
         </h1>
-        <div className="overflow-hidden px-3 hidden sm:flex">
+        <div className="overflow-hidden px-3 hidden sm:flex bg-[#FFF8E3] p-5 m-5 rounded-lg">
           <motion.div style={{ x }} className="flex gap-5">
-            {/* {timelineCards} */}
             {cards}
           </motion.div>
         </div>
         <div className="visible flex flex-col sm:hidden items-center gap-5 pb-10 ">
-          {/* {timelineCards} */}
         </div>
       </div>
     </section>
