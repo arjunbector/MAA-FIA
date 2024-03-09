@@ -1,4 +1,4 @@
-import Dashboard from "@/components/LandingPage/Dashboard/dashboard";
+import Dashboard from "@/components/Dashboard/dashboard";
 import FormSection from "@/components/LandingPage/FormSection/FormSection";
 import HeroSection from "@/components/LandingPage/HeroSection";
 
