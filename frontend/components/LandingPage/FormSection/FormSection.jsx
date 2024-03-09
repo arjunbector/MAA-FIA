@@ -55,13 +55,14 @@ const FormSection = () => {
       <div className="absolute top-40 left-[-1vw]">
         <Image className="h-56" src={leftVector} />
       </div>
-      <div className="absolute right-[-1vw] top-2">
+      <div className="absolute right-[-1vw] top-[100vh]">
         <Image className="h-56" src={rightVector} />
       </div>
       <div className="absolute bottom-0 left-[30vw]">
         <Image className="w-96" src={bottomVector} />
       </div>
       <div className="w-[90vw] bg-[#f3d7ca6c] min-h-screen h-fit backdrop-blur-[3px] m-10">
+        <h1 className="text-center text-4xl mt-4 mb-[-40px] font-semibold">Share Your Details</h1>
         <Form formData={formData} setFormData={setFormData} />
         <div className="my-16 mx-28 p-10 bg-[#FFF8E3] flex flex-col justify-start rounded-lg">
           <h1 className="m-1 font-semibold mb-3">Health Complications</h1>
@@ -70,6 +71,9 @@ const FormSection = () => {
         <div className="my-16 mx-28 p-10 bg-[#FFF8E3] flex flex-col justify-start rounded-lg">
           <h1 className="m-1 font-semibold mb-3">Expected Challenges you foresee when returning to work </h1>
           <div className="flex flex-wrap gap-4">{challengesCapsules}</div>
+        </div>
+        <div className="w-full text-center">
+          <button className="bg-[#E6A4B4] px-3 py-2 rounded-xl mb-3 font-semibold">Submit</button>
         </div>
       </div>
     </section>
