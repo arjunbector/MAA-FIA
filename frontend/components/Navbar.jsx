@@ -2,6 +2,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 
 const Navbar = () => {
   const { status } = useSession();
+  console.log("cfgdvdstet",status)
   return (
     <nav>
       {status === "authenticated" ? (
