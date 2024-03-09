@@ -26,7 +26,7 @@ const FormSection = () => {
   console.log(healthDataToSend);
   const healthData = [...healthCompArr];
   const capsules = healthData.map((complication) => (
-    <Capsule text={complication.name} selected={complication.selected} healthDataToSend={healthDataToSend} setHealthDataToSend={setHealthDataToSend} />
+    <Capsule text={complication.name} selected={complication.selected} healthDataToSend={healthDataToSend} setHealthDataToSend={setHealthDataToSend} healthData={healthData} />
   ));
 
   console.log(formData);
