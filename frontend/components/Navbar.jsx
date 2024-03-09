@@ -7,7 +7,7 @@ const Navbar = () => {
   return (
     <nav className="flex w-full sticky backdrop-blur-sm h-16 z-[10] top-0 justify-end p-5 gap-10 items-center bg-[#f3d7ca8e]">
       <Link href="/">Home</Link>
-      <Link href="/">Blogs</Link>
+      <Link href="#blogs">Blogs</Link>
       <Link href="/">About Us</Link>
       <Link href="/">Dashboard</Link>
       {status === "authenticated" ? (
