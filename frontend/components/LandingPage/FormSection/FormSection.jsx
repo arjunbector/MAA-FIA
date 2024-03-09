@@ -11,6 +11,7 @@ import { useSession } from "next-auth/react";
 
 const FormSection = () => {
   const { data: session, status } = useSession();
+ console.log("dvbfhjbscjbfj",session)
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -60,12 +61,12 @@ const FormSection = () => {
       healthComplications: healthDataToSend,
       challenges: challengesDataToSend,
     });
-    console.log("session ====== \n\n\n\n\n\n\n",session)
+    console.log("fdsgfcgcvgvbvbcgcfgchg",session)
     fetch("api/register/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${session.accessToken}`,
+        Authorization: `Bearer ${session.accessTokenBckend}`,
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(formData),
@@ -73,7 +74,7 @@ const FormSection = () => {
       console.log("Response:" , res.status);
       if (res.status === 200) {
         console.log("User Details entered");
-        console.log("session:", session.accessToken );
+        console.log("session:", session.accessTokenBackend);
         fetch("api/gemini/callgemini", {
           method: "POST",
           headers: {

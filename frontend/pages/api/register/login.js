@@ -6,6 +6,7 @@ import { generateTokens } from "./generateTokenUser.js";
 export default async function handler(req, res) {
   try {
     await connectMongoDB();
+    
     const firstName = req.body.firstName;
     const lastName = req.body.email;
     const phoneNo = req.body.phoneNo;
