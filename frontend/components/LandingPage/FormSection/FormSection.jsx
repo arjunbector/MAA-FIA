@@ -7,8 +7,10 @@ import healthCompArr from "@/constants/complications";
 import challenges from "@/constants/challenges";
 import { useState } from "react";
 import Capsule from "./Capsule";
+import { useSession } from "next-auth/react";
 
 const FormSection = () => {
+  const { data: session, status } = useSession();
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -50,6 +52,25 @@ const FormSection = () => {
   console.log(healthDataToSend);
   console.log(challengesDataToSend);
   console.log(formData);
+
+  const sendData = () => {
+    console.log("Sending data");
+    setFormData({
+      ...formData,
+      healthComplications: healthDataToSend,
+      challenges: challengesDataToSend,
+    });
+    fetch("api/register/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorzation: `Bearer ${session.accessToken}`,
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(formData),
+    }).then((res) => console.log(res));
+  };
+
   return (
     <section className="min-h-screen bg-[#F5EEE6] relative overflow-x-hidden flex justify-center items-center">
       <div className="absolute top-40 left-[-1vw]">
@@ -62,18 +83,27 @@ const FormSection = () => {
         <Image className="w-96" src={bottomVector} />
       </div>
       <div className="w-[90vw] bg-[#f3d7ca6c] min-h-screen h-fit backdrop-blur-[3px] m-10">
-        <h1 className="text-center text-4xl mt-4 mb-[-40px] font-semibold">Share Your Details</h1>
+        <h1 className="text-center text-4xl mt-4 mb-[-40px] font-semibold">
+          Share Your Details
+        </h1>
         <Form formData={formData} setFormData={setFormData} />
         <div className="my-16 mx-28 p-10 bg-[#FFF8E3] flex flex-col justify-start rounded-lg">
           <h1 className="m-1 font-semibold mb-3">Health Complications</h1>
           <div className="flex flex-wrap gap-4">{healthCapsules}</div>
         </div>
         <div className="my-16 mx-28 p-10 bg-[#FFF8E3] flex flex-col justify-start rounded-lg">
-          <h1 className="m-1 font-semibold mb-3">Expected Challenges you foresee when returning to work </h1>
+          <h1 className="m-1 font-semibold mb-3">
+            Expected Challenges you foresee when returning to work{" "}
+          </h1>
           <div className="flex flex-wrap gap-4">{challengesCapsules}</div>
         </div>
         <div className="w-full text-center">
-          <button className="bg-[#E6A4B4] px-3 py-2 rounded-xl mb-3 font-semibold">Submit</button>
+          <button
+            className="bg-[#E6A4B4] px-3 py-2 rounded-xl mb-3 font-semibold"
+            onClick={sendData}
+          >
+            Submit
+          </button>
         </div>
       </div>
     </section>

@@ -4,27 +4,38 @@ import { Schema } from 'mongoose';
 const userDetailSchema = new Schema(
     {
    
-        hasFilledDetails: {
-            type: Boolean,
-        },
         firstName: {
             type: String,
         },
         lastName: {
             type: String,
         },
-        regNo: {
-            type: String,
-        },
-        mobno: {
+        phoneNo: {
             type: Number,
         },
-        teamRole:{
-            type:Number, // 0 for leader, 1 for member
+        bloodGroup: {
+            type: String,
         },
-        teamId: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "TeamModel",
+        job: {
+            type: String,
+        },
+        industry: {
+            type: String,
+        },
+        city: {
+            type: String,
+        },
+        country: {
+            type: String,
+        },
+        dod: {
+            type: String,
+        },
+        healthComplications: {
+            type: Array,
+        },
+        challenges: {
+            type: Array,
         },
         daily:{
             type:Array,
