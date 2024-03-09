@@ -3,7 +3,10 @@ import leftVector from "../../../public/landingPage/form/leftVector.svg";
 import rightVector from "../../../public/landingPage/form/rightVector.svg";
 import bottomVector from "../../../public/landingPage/form/bottomVector.svg";
 import Form from "./Form";
+import healthCompArr from "@/constants/complications";
+import challenges from "@/constants/challenges";
 import { useState } from "react";
+import Capsule from "./Capsule";
 
 const FormSection = () => {
   const [formData, setFormData] = useState({
@@ -20,74 +23,58 @@ const FormSection = () => {
     challenges: [],
   });
 
-  const healthCompArr = [
-    {
-      id: 1,
-      name: "Postpartum Depression",
-      selected: false,
-    },
-    {
-      id: 2,
-      name: "Anemia",
-      selected: false,
-    },
-    {
-      id: 3,
-      name: "Chronic Pain",
-      selected: false,
-    },
-    {
-      id: 4,
-      name: "Fatigue",
-      selected: false,
-    },
-    {
-      id: 5,
-      name: "Breastfeeding Issues",
-      selected: false,
-    },
-    {
-      id: 6,
-      name: "Postpartum Hormonal Changes",
-      selected: false,
-    },
-    {
-      id: 7,
-      name: "Urinary Incontinence",
-      selected: false,
-    },
-    {
-      id: 8,
-      name: "Emotional Adjustment",
-      selected: false,
-    },
-    {
-      id: 9,
-      name: "Sleep Disorder",
-      selected: false,
-    },
-    {
-      id: 10,
-      name: "Postpartum Weight Retention",
-      selected: false,
-    },
-  ];
-  
+  const [healthDataToSend, setHealthDataToSend] = useState([]);
+  const healthData = [...healthCompArr];
+  const healthCapsules = healthData.map((complication) => (
+    <Capsule
+      text={complication.name}
+      selected={complication.selected}
+      healthDataToSend={healthDataToSend}
+      setHealthDataToSend={setHealthDataToSend}
+      healthData={healthData}
+    />
+  ));
 
+  const [challengesDataToSend, setChallengesDataToSend] = useState([]);
+  const challengesData = [...challenges];
+  const challengesCapsules = challengesData.map((complication) => (
+    <Capsule
+      text={complication.name}
+      selected={complication.selected}
+      healthDataToSend={challengesDataToSend}
+      setHealthDataToSend={setChallengesDataToSend}
+      healthData={challengesData}
+    />
+  ));
+
+  console.log(healthDataToSend);
+  console.log(challengesDataToSend);
   console.log(formData);
   return (
     <section className="min-h-screen bg-[#F5EEE6] relative overflow-x-hidden flex justify-center items-center">
       <div className="absolute top-40 left-[-1vw]">
         <Image className="h-56" src={leftVector} />
       </div>
-      <div className="absolute right-[-1vw] top-2">
+      <div className="absolute right-[-1vw] top-[100vh]">
         <Image className="h-56" src={rightVector} />
       </div>
       <div className="absolute bottom-0 left-[30vw]">
         <Image className="w-96" src={bottomVector} />
       </div>
-      <div className="w-[90vw] bg-[#f3d7ca6c] h-screen backdrop-blur-[3px] m-10">
+      <div className="w-[90vw] bg-[#f3d7ca6c] min-h-screen h-fit backdrop-blur-[3px] m-10">
+        <h1 className="text-center text-4xl mt-4 mb-[-40px] font-semibold">Share Your Details</h1>
         <Form formData={formData} setFormData={setFormData} />
+        <div className="my-16 mx-28 p-10 bg-[#FFF8E3] flex flex-col justify-start rounded-lg">
+          <h1 className="m-1 font-semibold mb-3">Health Complications</h1>
+          <div className="flex flex-wrap gap-4">{healthCapsules}</div>
+        </div>
+        <div className="my-16 mx-28 p-10 bg-[#FFF8E3] flex flex-col justify-start rounded-lg">
+          <h1 className="m-1 font-semibold mb-3">Expected Challenges you foresee when returning to work </h1>
+          <div className="flex flex-wrap gap-4">{challengesCapsules}</div>
+        </div>
+        <div className="w-full text-center">
+          <button className="bg-[#E6A4B4] px-3 py-2 rounded-xl mb-3 font-semibold">Submit</button>
+        </div>
       </div>
     </section>
   );
