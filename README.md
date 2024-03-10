@@ -24,7 +24,8 @@ we understand the transformative journey that comes with motherhood. We recogniz
 
 - We also have customized graphs on a daily and weekly basis to visualize the progress which also makes the interaction interesting and fun. Users can check out the completed task so that it will help the graph grow!
 
-  <img width="342" alt="image" src="https://github.com/arjunbector/MAA-FIA/assets/110609967/b3ae1d76-6414-4a9a-af5a-46f176c6cdf4">
+  <img width="346" alt="image" src="https://github.com/arjunbector/MAA-FIA/assets/110609967/9b906b04-d54d-483d-bf7f-794a7adc10f7">
+
   
 
   
