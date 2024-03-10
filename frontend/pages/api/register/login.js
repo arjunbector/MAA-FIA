@@ -2,11 +2,20 @@ import { connectMongoDB } from "@/lib/mongodb";
 import { NextResponse } from "next/server";
 import { UsersDetails } from "@/models/Userdetails";
 import { generateTokens } from "./generateTokenUser.js";
+import getTokenDetails from "@/utils/auth";
+import {Users} from "@/models/user.js"
+import { ChevronsUp } from "lucide-react";
 
 export default async function handler(req, res) {
   try {
     await connectMongoDB();
-    
+
+    const auth = req.headers.authorization.split(' ')[1];
+    let userId = await getTokenDetails(auth);
+    //console.log("++++++",userId);
+    const user=await Users.findById(userId);
+
+   // console.log(user);
     const firstName = req.body.firstName;
     const lastName = req.body.email;
     const phoneNo = req.body.phoneNo;
@@ -18,23 +27,13 @@ export default async function handler(req, res) {
     const dod = req.body.dod;
     const healthComplications = req.body.healthComplications;
     const challenges = req.body.challenges;
-    const newUserDetail = new UsersDetails({
-      firstName,
-      lastName,
-      phoneNo,
-      bloodGroup,
-      job,
-      industry,
-      city,
-      dob,
-      dod,
-      healthComplications,
-      challenges,
-    });
+    console.log("-----")
+    console.log(phoneNo,bloodGroup,job);
+    await Users.findByIdAndUpdate(userId, {$set: {phoneNo: phoneNo, bloodGroup: bloodGroup, job: job, industry: industry, city: city, dob: dob, dod: dod, healthComplications: healthComplications, challenges: challenges}});
+    console.log("+++++");
+    console.log(user);
 
-    await newUserDetail.save();
-
-    //console.log(accessToken);
+    
 
     console.log("USER DETAILS ENTERED.")
     return res.json({ message: "User Details entered ", status: 200 });

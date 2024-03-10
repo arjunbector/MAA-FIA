@@ -9,14 +9,14 @@ export default async function getTokenDetails(token) {
 
     const tokenDetails = await jwtVerify(
       token,
-      new TextEncoder().encode(process.env.REFRESH_TOKEN_SECRET)
+      new TextEncoder().encode(process.env.ACCESS_TOKEN_SECRET)
     );
 
     const userId = tokenDetails.payload._id;
     console.log(userId)
 
     const user = await UsersDetails.findById(userId);
-    console.log(user)
+    console.log("dsbhfbebgvh",user)
    
 
     return userId;

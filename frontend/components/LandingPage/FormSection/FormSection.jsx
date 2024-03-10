@@ -11,7 +11,9 @@ import { useSession } from "next-auth/react";
 
 const FormSection = () => {
   const { data: session, status } = useSession();
- console.log("dvbfhjbscjbfj",session)
+  console.log("dvbfhjbscjbfj", session);
+  const [geminiData, setGeminiData] = useState([]);
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -26,6 +28,10 @@ const FormSection = () => {
     challenges: [],
   });
 
+  const [dailyTasks, setDailyTasks] = useState([]);
+  const [weeklyTasks, setWeeklyTasks] = useState([]);
+  const [dailyTasksArr, setDailyTasksArr] = useState([]);
+  const [weeklyTasksArr, setWeeklyTasksArr] = useState([]);
   const [healthDataToSend, setHealthDataToSend] = useState([]);
   const healthData = [...healthCompArr];
   const healthCapsules = healthData.map((complication) => (
@@ -61,42 +67,76 @@ const FormSection = () => {
       healthComplications: healthDataToSend,
       challenges: challengesDataToSend,
     });
-    console.log("fdsgfcgcvgvbvbcgcfgchg",session)
-    fetch("api/register/login", {
+    console.log("fdsgfcgcvgvbvbcgcfgchg", session);
+    fetch("/api/register/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${session.accessTokenBckend}`,
+        Authorization: `Bearer ${session.accessTokenBackend}`,
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(formData),
-    }).then((res) => {
-      console.log("Response:" , res.status);
-      if (res.status === 200) {
-        console.log("User Details entered");
-        console.log("session:", session.accessTokenBackend);
-        fetch("api/gemini/callgemini", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${session.accessToken}`,
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify({}),
-        })
-        .then(res=>{
-          if(res.status===200){
-            console.log("Done");
-          }
-        })
-        ;
-      }
     })
-    .catch(err=>{
-    console.log("Error occured",err);
-    });
+      .then((res) => {
+        console.log("Response:", res.status);
+        if (res.status === 200) {
+          console.log("User Details entered");
+          console.log("session:", session.accessTokenBackend);
+          return fetch("/api/gemini/callgemini", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${session.accessTokenBackend}`,
+              "Access-Control-Allow-Origin": "*",
+            },
+            body: JSON.stringify({}),
+          });
+        }
+      })
+      .then((res) => {
+        if (res.status === 200) {
+          console.log("Done");
+          return fetch("/api/gemini/getData", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${session.accessTokenBackend}`,
+              "Access-Control-Allow-Origin": "*",
+            },
+          });
+        }
+      })
+      .then((res) => {
+        if (!res) {
+          throw new Error("Response is undefined");
+        }
+        if (res.status === 200) {
+          console.log("Data fetched");
+          return res.json();
+        }
+      })
+      .then((data) => {
+        console.log("Data from gemini:", data);
+        setGeminiData(data);
+        setDailyTasksArr(
+          data.dailyTasks.map((task) => (
+            <div className="m-2 p-2 bg-[#FFF8E3] rounded-xl shadow-lg">
+              <p className="font-semibold text-xl">{task}</p>
+            </div>
+          ))
+        )
+        setWeeklyTasksArr(
+          data.weeklyTasks.map((task) => (
+            <div className="m-2 p-2 bg-[#FFF8E3] rounded-xl shadow-lg">
+              <p className="font-semibold text-xl">{task}</p>
+            </div>
+          ))
+        );
+      })
+      .catch((err) => {
+        console.log("Error occured", err);
+      });
   };
-
   return (
     <section className="min-h-screen bg-[#F5EEE6] relative overflow-x-hidden flex justify-center items-center">
       <div className="absolute top-40 left-[-1vw]">
@@ -108,8 +148,8 @@ const FormSection = () => {
       <div className="absolute bottom-0 left-[30vw]">
         <Image className="w-96" src={bottomVector} />
       </div>
-      <div className="w-[90vw] bg-[#f3d7ca6c] min-h-screen h-fit backdrop-blur-[3px] m-10">
-        <h1 className="text-center text-4xl mt-4 mb-[-40px] font-semibold">
+      <div className="w-[90vw] bg-[#f3d7ca6c] min-h-screen h-fit backdrop-blur-[3px] m-10 shadow-xl rounded-xl">
+        <h1 className="text-center text-4xl mt-4 mb-[-40px] font-semibold font-[Grespoika]">
           Share Your Details
         </h1>
         <Form formData={formData} setFormData={setFormData} />
@@ -131,6 +171,19 @@ const FormSection = () => {
             Submit
           </button>
         </div>
+      {geminiData && (
+        <div>
+          <h1 className="text-4xl font-semibold">Your Daily Tasks</h1>
+          <div>{dailyTasksArr}</div>
+        </div>
+      )}
+      {geminiData && (
+        <div>
+          <h1 className="text-4xl font-semibold">Your Weekly Tasks</h1>
+          <div>{weeklyTasksArr}</div>
+
+        </div>
+      )}
       </div>
     </section>
   );
