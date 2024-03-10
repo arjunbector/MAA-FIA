@@ -1,6 +1,7 @@
 "use client";
 import { useRef, useEffect, useState } from "react";
 import { Chart } from "chart.js/auto";
+import axios from "axios";
 
 
 export default function BarChart() {
