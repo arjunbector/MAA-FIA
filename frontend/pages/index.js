@@ -3,7 +3,6 @@ import Dashboard from "@/components/Dashboard/dashboard";
 
 
 
-import Dashboard from "@/components/Dashboard/dashboard";
 import AboutUs from "@/components/LandingPage/AboutUs/AboutUs";
 import Blogs from "@/components/LandingPage/Blogs/Blogs";
 
