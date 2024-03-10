@@ -57,6 +57,7 @@ const getTokenFromYourAPIServer = async (user, account) => {
     console.log(accessToken);
     return accessToken;
     
+    
   }
 
   const r=async(user,account)=>{
@@ -143,6 +144,7 @@ const authOptions={
             session.user = token.user;
             session.accessToken = token.accessToken;
             session.accessTokenBackend = token.accessTokenFromBackend;
+            console.log("Access token from backend",session.accessTokenBackend)
             session.error = token.error;
             session.idToken = token.idToken;
       if (token.accessTokenFromBackend) {

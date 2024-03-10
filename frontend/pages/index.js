@@ -1,5 +1,4 @@
 
-import Dashboard from "@/components/Dashboard/dashboard";
 
 
 
@@ -17,7 +16,6 @@ export default function Home() {
       <HeroSection />
       <AboutUs />
       <Blogs />
-      <Dashboard />
     </main>
   );
 }
