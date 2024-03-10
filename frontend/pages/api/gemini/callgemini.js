@@ -4,18 +4,20 @@ import { UsersDetails } from "@/models/Userdetails";
 
 import getTokenDetails from "@/utils/auth";
 import { connectMongoDB } from "@/lib/mongodb";
+import {Users} from "../../../models/user"
 
 export default async function handler(req, res) {
   connectMongoDB();
 
   console.log("asjkgbajsnfjasbgjasbgj");
-  console.log(req.headers);
+  //console.log(req.headers);
   const auth = req.headers.authorization.split(" ")[1];
   let userId = await getTokenDetails(auth);
-  let user = await UsersDetails.findById(userId);
+  console.log("fffgf",userId);
+  let user = await Users.findById(userId);
 
   console.log("USER===",user);
-  console.log(dob);
+ 
 
   const dob = user.dob;
   const dod = user.dod;
@@ -26,8 +28,8 @@ export default async function handler(req, res) {
   console.log("aage====", babyAge);
   //console.log(user);
   const details = {
-    firstName: user.firstName,
-    lastName: user.lastName,
+    name: user.name,
+    //lastName: user.lastName,
     age: age,
     city: user.city,
     country: user.country,
@@ -43,7 +45,7 @@ export default async function handler(req, res) {
   console.log(sentencesArray[0]);
   console.log("fbhdshvbhebvshdbrsfhbghjscjr");
   console.log(sentencesArray[1]);
-  await UsersDetails.findByIdAndUpdate(userId, {
+  await Users.findByIdAndUpdate(userId, {
     $set: { daily: sentencesArray[0], weekly: sentencesArray[1] },
   });
   console.log("ho gya jii congrats");

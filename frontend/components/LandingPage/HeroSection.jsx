@@ -7,17 +7,18 @@ import img4 from "../../public/landingPage/home/img4.svg";
 import mumma from "../../public/landingPage/home/mumma.svg";
 import { motion } from "framer-motion";
 
-
 const HeroSection = () => {
   return (
     <section className="min-h-screen flex items-start pt-20 bg-[#F5EEE6]">
       <div className="h-52 w-full flex flex-col-reverse  md:flex-row justify-center items-start mx-32 gap-10">
         <div className="w-full sm:w-1/2 h-full">
           <div className="relative">
-            <motion.div className="absolute top-[-50px] left-[-50px] z-[0]">
+            <motion.div className="absolute top-[-50px] left-[-50px] z-[1]">
               <Image src={mumma} />
             </motion.div>
-            <h1 className="text-7xl font-[Grespoika] z-[10]">MAA-FIA</h1>
+            <div className="z-[10]">
+              <h1 className="text-7xl font-[Grespoika]">MAA-FIA</h1>
+            </div>
           </div>
           <div className="flex flex-col gap-10 mt-5 text-lg">
             <p className="font-semibold">
