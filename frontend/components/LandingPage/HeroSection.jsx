@@ -6,6 +6,9 @@ import img3 from "../../public/landingPage/home/img3.svg";
 import img4 from "../../public/landingPage/home/img4.svg";
 import mumma from "../../public/landingPage/home/mumma.svg";
 import { motion } from "framer-motion";
+import Link from "next/link";
+import { FaArrowCircleRight } from "react-icons/fa";
+
 
 const HeroSection = () => {
   return (
@@ -29,11 +32,18 @@ const HeroSection = () => {
               is a cutting-edge web app designed to support women returning to
               work after childbirth
             </p>
-            <p className="">
+            <p className="font-semibold">
               73% of women leave their job after becoming Mother. We are here to
               help and promote our working MUMMAs to be independent and balance
               their loving motherhood and corporate life
             </p>
+            <div>
+              <Link href={"/form"}>
+                <button className="bg-[#E6A4B4] px-2 py-1 rounded-md flex items-center gap-3">
+                  Get Started <FaArrowCircleRight />
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
         <div className="w-fit grid grid-cols-2 justify-items-center gap-2 md:gap-5">

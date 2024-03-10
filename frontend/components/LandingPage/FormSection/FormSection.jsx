@@ -8,11 +8,13 @@ import challenges from "@/constants/challenges";
 import { useState } from "react";
 import Capsule from "./Capsule";
 import { useSession } from "next-auth/react";
+import ReactLoading from "react-loading";
 
 const FormSection = () => {
   const { data: session, status } = useSession();
   console.log("dvbfhjbscjbfj", session);
   const [geminiData, setGeminiData] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     firstName: "",
@@ -61,6 +63,7 @@ const FormSection = () => {
   console.log(formData);
 
   const sendData = () => {
+    setLoading(true);
     console.log("Sending data");
     setFormData({
       ...formData,
@@ -124,7 +127,7 @@ const FormSection = () => {
               <p className="font-semibold text-xl">{task}</p>
             </div>
           ))
-        )
+        );
         setWeeklyTasksArr(
           data.weeklyTasks.map((task) => (
             <div className="m-2 p-2 bg-[#FFF8E3] rounded-xl shadow-lg">
@@ -132,6 +135,7 @@ const FormSection = () => {
             </div>
           ))
         );
+        setLoading(false);
       })
       .catch((err) => {
         console.log("Error occured", err);
@@ -165,25 +169,34 @@ const FormSection = () => {
         </div>
         <div className="w-full text-center">
           <button
-            className="bg-[#E6A4B4] px-3 py-2 rounded-xl mb-3 font-semibold"
+            className="bg-[#E6A4B4] px-3 py-2 rounded-xl mb-3 font-semibold min-w-20 text-center"
             onClick={sendData}
           >
-            Submit
+            {loading ? (
+              <ReactLoading
+              className="m-auto"
+                type={"spin"}
+                color={"black"}
+                height={30}
+                width={30}
+              />
+            ) : (
+              "Submit"
+            )}
           </button>
         </div>
-      {geminiData && (
-        <div>
-          <h1 className="text-4xl font-semibold">Your Daily Tasks</h1>
-          <div>{dailyTasksArr}</div>
-        </div>
-      )}
-      {geminiData && (
-        <div>
-          <h1 className="text-4xl font-semibold">Your Weekly Tasks</h1>
-          <div>{weeklyTasksArr}</div>
-
-        </div>
-      )}
+        {geminiData && (
+          <div>
+            <h1 className="text-4xl font-semibold">Your Daily Tasks</h1>
+            <div>{dailyTasksArr}</div>
+          </div>
+        )}
+        {geminiData && (
+          <div>
+            <h1 className="text-4xl font-semibold">Your Weekly Tasks</h1>
+            <div>{weeklyTasksArr}</div>
+          </div>
+        )}
       </div>
     </section>
   );

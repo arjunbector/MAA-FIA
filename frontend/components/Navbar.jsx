@@ -12,7 +12,7 @@ const Navbar = () => {
       <Link href="/">Dashboard</Link>
       {status === "authenticated" ? (
         <button
-          classname="bg-[#E6A4B4]"
+        className="bg-[#E6A4B4] px-2 py-1 rounded-md"
           onClick={() => {
             signOut();
           }}
@@ -23,6 +23,7 @@ const Navbar = () => {
         <button className="bg-[#E6A4B4] px-2 py-1 rounded-md"
           onClick={() => {
             signIn("google");
+            
           }}
         >
           Login
