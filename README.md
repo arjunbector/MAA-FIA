@@ -1,7 +1,7 @@
 # MAA-FIA
 
-Presented by team
-INFINITE LOOPS
+Presented by Team
+* INFINITE LOOPS *
 Women Techies 2024
 
 At MAA-FIA (Mother's After-Assistance – Facilitating Integration & Advancement)
@@ -16,6 +16,19 @@ we understand the transformative journey that comes with motherhood. We recogniz
 - Convenient Childcare Solutions: Discover childcare services conveniently located near your home or workplace. Our comprehensive database includes daycare centers, nurseries, nannies, and babysitters, making it easy to find the perfect fit for your family.
 
 - Inspiring Success Stories: Learn from the journeys of women who have successfully balanced work and motherhood. Gain insight, motivation, and practical tips from their experiences to help you navigate your own path with confidence
+
+- We ask the user to fill out a form that will let us know the problem they are facing and that will help us customize the solution/to-do list accordingly. Our product will integrate medical conditions with an NLP model and utilize Generative AI to give us accurate solutions.
+
+  ![image](https://github.com/arjunbector/MAA-FIA/assets/110609967/21e25576-522b-4552-a7b1-7465176dc4d7)
+
+- We also have customized graphs on a daily and weekly basis to visualize the progress which also makes the interaction interesting and fun. Users can check out the completed task so that it will help the graph grow!
+
+  <img width="342" alt="image" src="https://github.com/arjunbector/MAA-FIA/assets/110609967/b3ae1d76-6414-4a9a-af5a-46f176c6cdf4">
+  
+
+  
+
+
 
 
 
