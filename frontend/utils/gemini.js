@@ -42,7 +42,10 @@ export default async function runChat(details) {
   
 
   let details1 =
-    `Name: ${details.firstName + details.lastName} Age: ${details.age} From: ${details.city + ", " + details.country} Industry: ${details.industry} Age of baby: ${details.babyAge} months Complications after delivery: ${", ".join(details.healthComplications)} Scares before joining back: ${", ".join(details.challenges)}`;
+    `Name: ${details.name}  Age: ${details.age} From: ${details.city}, ${details.country} Industry: ${details.industry} Age of baby: ${details.babyAge} months Complications after delivery: ${details.healthComplications.join(", ")} Scares before joining back: ${details.challenges.join(", ")}`;
+
+  console.log(details1);
+
 
   const chat = model.startChat({
     generationConfig,

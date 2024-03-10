@@ -12,6 +12,7 @@ import { useSession } from "next-auth/react";
 const FormSection = () => {
   const { data: session, status } = useSession();
  console.log("dvbfhjbscjbfj",session)
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -66,7 +67,7 @@ const FormSection = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${session.accessTokenBckend}`,
+        Authorization: `Bearer ${session.accessTokenBackend}`,
         "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(formData),
@@ -79,7 +80,7 @@ const FormSection = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${session.accessToken}`,
+            Authorization: `Bearer ${session.accessTokenBackend}`,
             "Access-Control-Allow-Origin": "*",
           },
           body: JSON.stringify({}),
