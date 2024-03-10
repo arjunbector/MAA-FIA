@@ -1,4 +1,4 @@
-###MAA-FIA
+# MAA-FIA
 
 Presented by team
 INFINITE LOOPS
@@ -9,7 +9,7 @@ we understand the transformative journey that comes with motherhood. We recogniz
 
 <img width="651" alt="image" src="https://github.com/arjunbector/MAA-FIA/assets/110609967/d73ed824-0997-4a13-a643-6cb3547e0bd3">
 
-###FEATURES:
+### FEATURES:
 
 - Personalized Task Assistance: Experience a seamless return to the workplace with personalized tasks tailored to your unique needs. Simply provide us with some information, and we'll curate a list of tasks to ensure your transition is as smooth as possible
 
