@@ -53,6 +53,7 @@ const getTokenFromYourAPIServer = async (user, account) => {
     const users = await Users.findOne({ email: email });
     console.log(users)
     const { accessToken, refreshToken } = await generateTokens(users);
+    console.log("\n\n\n\n\n\n\n\n");
     console.log(accessToken);
     return accessToken;
     
