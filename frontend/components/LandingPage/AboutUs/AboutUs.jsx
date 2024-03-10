@@ -3,7 +3,7 @@ const AboutUs = () => {
   return (
     <section id="about" className="flex flex-col px-20 bg-[#F5EEE6]">
       <div className="bg-[#f3d7ca72] p-12 backdrop-blur-md rounded-xl">
-        <h1 className="text-4xl uppercase font-semibold text-center ">
+        <h1 className="text-4xl uppercase font-semibold text-center font-[Grespoika]">
           about us
         </h1>
         <p className="text-xl my-5 text-justify">

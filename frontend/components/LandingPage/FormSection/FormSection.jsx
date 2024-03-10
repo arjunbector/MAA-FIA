@@ -108,8 +108,8 @@ const FormSection = () => {
       <div className="absolute bottom-0 left-[30vw]">
         <Image className="w-96" src={bottomVector} />
       </div>
-      <div className="w-[90vw] bg-[#f3d7ca6c] min-h-screen h-fit backdrop-blur-[3px] m-10">
-        <h1 className="text-center text-4xl mt-4 mb-[-40px] font-semibold">
+      <div className="w-[90vw] bg-[#f3d7ca6c] min-h-screen h-fit backdrop-blur-[3px] m-10 shadow-xl rounded-xl">
+        <h1 className="text-center text-4xl mt-4 mb-[-40px] font-semibold font-[Grespoika]">
           Share Your Details
         </h1>
         <Form formData={formData} setFormData={setFormData} />
