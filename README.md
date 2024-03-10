@@ -19,7 +19,8 @@ we understand the transformative journey that comes with motherhood. We recogniz
 
 - We ask the user to fill out a form that will let us know the problem they are facing and that will help us customize the solution/to-do list accordingly. Our product will integrate medical conditions with an NLP model and utilize Generative AI to give us accurate solutions.
 
-  ![image](https://github.com/arjunbector/MAA-FIA/assets/110609967/21e25576-522b-4552-a7b1-7465176dc4d7)
+ <img width="348" alt="image" src="https://github.com/arjunbector/MAA-FIA/assets/110609967/f480e742-1842-408a-987a-963e54ee149b">
+
 
 - We also have customized graphs on a daily and weekly basis to visualize the progress which also makes the interaction interesting and fun. Users can check out the completed task so that it will help the graph grow!
 
