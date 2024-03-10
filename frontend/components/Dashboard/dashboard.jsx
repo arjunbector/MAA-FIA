@@ -71,7 +71,6 @@ const Dashboard = () => {
                 <h2 className="text-xl font-bold mb-2 top-0 ">Weekly Tasks</h2>
                 <CircularProgress determinate value={50} size="lg" thickness={10} color="success"/>
             </div>
-            
           </div> 
         </div>
         
