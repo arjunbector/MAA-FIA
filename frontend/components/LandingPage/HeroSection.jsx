@@ -16,9 +16,9 @@ const HeroSection = () => {
       <div className="h-52 w-full flex flex-col-reverse  md:flex-row justify-center items-start mx-32 gap-10">
         <div className="w-full sm:w-1/2 h-full">
           <div className="relative">
-            <motion.div className="absolute top-[-50px] left-[-50px] z-[1]">
+            {/* <motion.div className="absolute top-[-50px] left-[-50px] z-[1]">
               <Image src={mumma} />
-            </motion.div>
+            </motion.div> */}
             <div className="z-[10]">
               <h1 className="text-7xl font-[Grespoika]">MAA-FIA</h1>
             </div>

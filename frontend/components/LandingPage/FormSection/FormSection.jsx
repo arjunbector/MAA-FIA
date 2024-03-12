@@ -9,11 +9,12 @@ import { useState } from "react";
 import Capsule from "./Capsule";
 import { useSession } from "next-auth/react";
 import ReactLoading from "react-loading";
+import Link from "next/link";
 
 const FormSection = () => {
   const { data: session, status } = useSession();
   console.log("dvbfhjbscjbfj", session);
-  const [geminiData, setGeminiData] = useState([]);
+  const [geminiData, setGeminiData] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -174,7 +175,7 @@ const FormSection = () => {
           >
             {loading ? (
               <ReactLoading
-              className="m-auto"
+                className="m-auto"
                 type={"spin"}
                 color={"black"}
                 height={30}
@@ -195,6 +196,13 @@ const FormSection = () => {
           <div>
             <h1 className="text-4xl font-semibold">Your Weekly Tasks</h1>
             <div>{weeklyTasksArr}</div>
+            <div>
+              <Link href={"/dashboard"}>
+                <button className="bg-[#E6A4B4] px-3 py-2 rounded-xl mb-3 font-semibold min-w-20 text-center">
+                  Go to Dashboard
+                </button>
+              </Link>
+            </div>
           </div>
         )}
       </div>
